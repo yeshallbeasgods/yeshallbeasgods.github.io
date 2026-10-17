@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Robert Probst: Software Test Engineer · Live Test Results</title>
+		<meta
+			name="description"
+			content="A live dashboard of test automation projects by Robert Probst, Software Test Engineer. Every project runs in CI and publishes its own results."
+		/>
+		<link
+			rel="icon"
+			href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0e14'/%3E%3Cpath d='M8 17l5 5 11-12' fill='none' stroke='%2335e0ff' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
+		/>
+		<script>
+			// Runs before the page paints, so the chosen theme never flashes. Dark is the default.
+			try {
+				document.documentElement.dataset.theme =
+					localStorage.getItem('hub-theme') === 'light' ? 'light' : 'dark'
+			} catch (error) {
+				document.documentElement.dataset.theme = 'dark'
+			}
+		</script>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<a class="skip-link" href="#projects">Skip to the projects</a>
+
+		<header class="masthead">
+			<div class="masthead-top">
+				<p class="prompt" aria-hidden="true">~/test-lab $ status --all</p>
+				<button id="theme-toggle" class="icon-button" type="button" aria-pressed="false">
+					<span id="theme-toggle-label">Light mode</span>
+				</button>
+			</div>
+
+			<h1>Robert Probst</h1>
+			<p class="role">Software Test Engineer</p>
+			<p class="tagline">
+				A live dashboard of my test automation projects. Each one runs in CI on every push and nightly, and
+				publishes its own results. This page reads them in your browser, so what you see is current.
+			</p>
+
+			<ul class="contact" aria-label="Contact links">
+				<li><a href="https://github.com/yeshallbeasgods" rel="noopener">GitHub</a></li>
+				<li>
+					<a href="https://www.linkedin.com/in/robert-probst-737364b8" rel="noopener">LinkedIn</a>
+				</li>
+				<li><a id="email-link" href="#contact" hidden>Email</a></li>
+			</ul>
+
+			<p id="summary" class="summary" aria-live="polite">Loading results…</p>
+		</header>
+
+		<main id="projects">
+			<section aria-labelledby="live-heading">
+				<h2 id="live-heading" class="section-title">Live results</h2>
+				<div id="live-grid" class="grid"></div>
+			</section>
+
+			<section aria-labelledby="asleep-heading">
+				<h2 id="asleep-heading" class="section-title">Sleeping</h2>
+				<p class="section-note">Built, but not yet publishing live results.</p>
+				<div id="asleep-grid" class="grid"></div>
+			</section>
+
+			<section aria-labelledby="notes-heading">
+				<h2 id="notes-heading" class="section-title">Notes and process</h2>
+				<div id="notes-grid" class="grid"></div>
+			</section>
+		</main>
+
+		<footer>
+			<h2 class="section-title">How this works</h2>
+			<ul class="how">
+				<li>Each project runs its tests in GitHub Actions on every push and again every night.</li>
+				<li>
+					After each run it publishes a small <code>status.json</code> next to its report. This page fetches
+					those files live. There is no server and no stored data.
+				</li>
+				<li>
+					A result older than about a day and a half is flagged as stale, so a quietly broken nightly run
+					cannot look healthy.
+				</li>
+			</ul>
+			<p class="fine-print">
+				Source for this page and the status format:
+				<a href="https://github.com/yeshallbeasgods/yeshallbeasgods.github.io" rel="noopener"
+					>yeshallbeasgods.github.io</a
+				>.
+			</p>
+		</footer>
+
+		<script src="app.js"></script>
+	</body>
+</html>

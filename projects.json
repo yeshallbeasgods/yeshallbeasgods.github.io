@@ -1,0 +1,63 @@
+{
+	"projects": [
+		{
+			"id": "playwright-typescript",
+			"title": "Playwright + TypeScript",
+			"subtitle": "UI and API regression",
+			"summary": "Sauce Demo UI tests and OpenWeather API tests in one runner. Page objects delivered as fixtures, an Allure report with trends, and nightly CI.",
+			"tags": ["TypeScript", "Playwright", "Allure", "GitHub Actions"],
+			"repo": "https://github.com/yeshallbeasgods/universal-cloudless-thousandoaks",
+			"site": "https://yeshallbeasgods.github.io/universal-cloudless-thousandoaks/"
+		},
+		{
+			"id": "selenium-python",
+			"title": "Selenium + Python",
+			"subtitle": "Custom utility library",
+			"summary": "Page objects, a custom utility library and mobile emulation against Sauce Demo. The smoke suite runs in CI and publishes a pytest-html report.",
+			"tags": ["Python", "Selenium", "pytest", "GitHub Actions"],
+			"repo": "https://github.com/yeshallbeasgods/ephemeral-blazing-berserker",
+			"site": "https://yeshallbeasgods.github.io/ephemeral-blazing-berserker/"
+		},
+		{
+			"id": "playwright-java",
+			"title": "Playwright + Java",
+			"subtitle": "UI and API automation",
+			"summary": "Playwright automation written in Java against Sauce Demo and the OpenWeather API.",
+			"tags": ["Java", "Playwright"],
+			"repo": "https://github.com/yeshallbeasgods/refined-joyous-camellia"
+		},
+		{
+			"id": "cypress-typescript",
+			"title": "Cypress + TypeScript",
+			"subtitle": "Component tests with API mocking",
+			"summary": "A lean React component-testing repo with API mocking and no page objects.",
+			"tags": ["TypeScript", "Cypress", "React"],
+			"repo": "https://github.com/yeshallbeasgods/indiscreet-pocketed-orange"
+		},
+		{
+			"id": "appium-python",
+			"title": "Appium + Python",
+			"subtitle": "Native mobile testing",
+			"summary": "A simple repo showing native mobile test automation.",
+			"tags": ["Python", "Appium"],
+			"repo": "https://github.com/yeshallbeasgods/rising-oceans-phoenix"
+		},
+		{
+			"id": "python-api-performance",
+			"title": "Python API + performance",
+			"subtitle": "Service-level suite",
+			"summary": "A full API suite using Locust, pytest and requests, with SQLite and small mock services.",
+			"tags": ["Python", "Locust", "pytest", "SQLite"],
+			"repo": "https://github.com/yeshallbeasgods/graceful-bluesilver-waltz"
+		},
+		{
+			"id": "qa-portfolio",
+			"kind": "docs",
+			"title": "Portfolio walkthrough",
+			"subtitle": "Notes and process",
+			"summary": "A walkthrough of every project for someone new to them: test philosophy, AI usage, agent files and plugins.",
+			"tags": ["Documentation"],
+			"repo": "https://github.com/yeshallbeasgods/qa-portfolio"
+		}
+	]
+}
