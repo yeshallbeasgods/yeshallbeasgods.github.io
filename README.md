@@ -52,6 +52,23 @@ Every live project publishes `status.json` at the root of its Pages site. Exampl
 - Projects with no `site` in `projects.json` are shown as **asleep**: built, but not yet publishing live results.
 - Values from remote files are inserted as text, never as HTML.
 
+## Health check
+
+`.github/workflows/health.yml` runs every day at 13:07 UTC, shortly after the projects' nightly runs, and on every
+change to the scripts or `projects.json`. It runs `scripts/validate-status.mjs`, which fetches each live project's
+`status.json` and fails if any of these is true:
+
+- the file is missing, is not valid JSON, or does not match the contract above;
+- the hub cannot read it from another site (no `access-control-allow-origin` header);
+- the result is older than 36 hours, which means the nightly run is probably broken;
+- the report link in the file does not load.
+
+A project whose latest test run **failed** is only a warning. That project's own CI reports test failures. This check
+is about whether results are being published correctly and on time.
+
+The rules live in a pure function with its own unit tests (`node --test scripts/validate-status.test.mjs`). To run the
+check yourself: `node scripts/validate-status.mjs`. Add `--stale-after-hours=1` to see how it reports a failure.
+
 ## Adding a project
 
 1. Make the repo publish a `status.json` to its Pages site, following the contract above.

@@ -1,0 +1,35 @@
+name: Hub health
+
+on:
+    schedule:
+        # Daily at 13:07 UTC (8:07 am CDT, 7:07 am CST). The projects' nightly runs start around 11:17 and 11:41 UTC,
+        # so by now each should have published a fresh status.json. A project that did not shows up as stale.
+        - cron: '7 13 * * *'
+    workflow_dispatch:
+    push:
+        branches: [main]
+        paths:
+            - scripts/**
+            - projects.json
+            - .github/workflows/health.yml
+
+permissions:
+    contents: read
+
+jobs:
+    check:
+        name: Check project status files
+        runs-on: ubuntu-24.04
+        timeout-minutes: 5
+        steps:
+            - uses: actions/checkout@v7
+              with:
+                  persist-credentials: false
+            - uses: actions/setup-node@v7
+              with:
+                  node-version: 24
+            - name: Unit tests for the validator
+              run: node --test scripts/validate-status.test.mjs
+            # Fails if any live project's status.json is missing, invalid, unreadable by the hub, or stale.
+            - name: Check the live status files
+              run: node scripts/validate-status.mjs
