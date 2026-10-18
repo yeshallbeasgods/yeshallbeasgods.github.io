@@ -13,8 +13,8 @@
 			"id": "selenium-python",
 			"title": "Selenium + Python",
 			"subtitle": "Custom utility library",
-			"summary": "Page objects, a custom utility library and mobile emulation against Sauce Demo. The smoke suite runs in CI and publishes a pytest-html report.",
-			"tags": ["Python", "Selenium", "pytest", "GitHub Actions"],
+			"summary": "Page objects, a custom utility library and mobile emulation against Sauce Demo. The smoke suite runs in CI and publishes an Allure report with a trends dashboard.",
+			"tags": ["Python", "Selenium", "pytest", "Allure", "GitHub Actions"],
 			"repo": "https://github.com/yeshallbeasgods/ephemeral-blazing-berserker",
 			"site": "https://yeshallbeasgods.github.io/ephemeral-blazing-berserker/"
 		},
